@@ -24,6 +24,31 @@
 				document.getElementById("solution1").innerHTML = sumTotal;
 		}
 		
+		function calcSolution2() {
+				//Initialize variables
+				var limit = document.getElementById("maxValue").value;
+				var currentNumber = 1;
+				var previouNumber = 0;
+				var nextNumber = 0;
+				var sumTotal = 0;
+				
+				//While loop limits iterations to number provided in form input
+				while (currentNumber < limit){
+						//Calculates the current Fibanocci pattern						
+						nextNumber = previouNumber + currentNumber;
+						//if the term is divisible by 2 (even) add it to the running total						
+						if (nextNumber % 2 == 0) {
+								sumTotal += nextNumber;
+						}
+						//setup variables for next loop
+						previouNumber = currentNumber;
+						currentNumber = nextNumber;
+						nextNumber = 0;
+				}
+				//Show the result of adding the evenly divisible numbers within the given limit
+				document.getElementById("solution2").innerHTML = sumTotal;
+		}
+		
 </script>
 </head>
 <body>
@@ -34,5 +59,11 @@
 				<input name="calculate" id="calculate" type="button" value="Calculate" onclick="calcSolution1();"/>
 		</form>
 		<p>Total = <strong><span id="solution1"></span></strong></p>
+		<h2>Solution 2</h2>
+		<form>
+				<p>By considering the terms in the Fibonacci sequence whose values do not exceed <input type="number" name="maxValue" value=4000000 id="maxValue">, find the sum of the even-valued terms.</p>
+				<input type="button" name="calculate2" value="Calculate" id="calculate2" onclick="calcSolution2();">
+				<p>Total = <strong><span id="solution2"></span></strong></p>		
+		</form>
 </body>
 </html>
