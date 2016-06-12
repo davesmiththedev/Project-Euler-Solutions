@@ -34,7 +34,7 @@
 				
 				//While loop limits iterations to number provided in form input
 				while (currentNumber < limit){
-						//Calculates the current Fibanocci pattern						
+						//Calculates the current Fibonacci pattern						
 						nextNumber = previouNumber + currentNumber;
 						//if the term is divisible by 2 (even) add it to the running total						
 						if (nextNumber % 2 == 0) {
@@ -49,21 +49,70 @@
 				document.getElementById("solution2").innerHTML = sumTotal;
 		}
 		
+		function calcSolution3() {
+				//Initialize variables
+				var limit = document.getElementById("userNumber").value;
+				var largestPrime = 1;
+				
+				if (limit <= 9999999) {
+				
+						for (i = 3; i < limit; i++) {						
+								if (isFactor(limit, i) && isPrime(i)) {																
+										largestPrime = i;
+								}
+								
+						}
+						//Display largest prime
+						document.getElementById("solution3").innerHTML = largestPrime;
+				}
+				else {
+						document.getElementById("solution3").innerHTML = "Enter a number < 10000000 to avoid errors.";
+				}
+		}
+		
+		//Returns true if the number is a factor of the limit and false if it is not
+		function isFactor(limit, numberToCheck) {				
+				if (limit % numberToCheck == 0) {
+						return true;
+				}
+				
+				return false;
+		}		
+		
+		//Returns false if numberToCheck is not prime true if it is		
+		function isPrime(numberToCheck) {
+				for (n = 2; n < numberToCheck; n++) {
+						if (numberToCheck % n == 0) {
+								return false;
+						}
+				}
+				return true;
+		}
+		
 </script>
 </head>
 <body>
 		<h1>The Odin Project Javascript 101 - Euler Project Solutions</h1></ br>
+		
 		<h2>Solution 1</h2>
 		<form>
 				<p>Find the sum of all the multiples of <input type="number" name="mult1" id="mult1" value="3"> or <input type="number" name="mult2" id="mult2" value="5"> below <input type="number" name="uLimit" id="uLimit" value="1000"></p>
 				<input name="calculate" id="calculate" type="button" value="Calculate" onclick="calcSolution1();"/>
+				<p>Answer = <strong><span id="solution1"></span></strong></p>
 		</form>
-		<p>Total = <strong><span id="solution1"></span></strong></p>
+		
 		<h2>Solution 2</h2>
 		<form>
 				<p>By considering the terms in the Fibonacci sequence whose values do not exceed <input type="number" name="maxValue" value=4000000 id="maxValue">, find the sum of the even-valued terms.</p>
 				<input type="button" name="calculate2" value="Calculate" id="calculate2" onclick="calcSolution2();">
-				<p>Total = <strong><span id="solution2"></span></strong></p>		
+				<p>Answer = <strong><span id="solution2"></span></strong></p>		
+		</form>
+		
+		<h2>Solution 3</h2>
+		<form>
+				<p>What is the largest prime factor of <input type="number" name="userNumber" value="600851475143" id="userNumber">.</p>
+				<input type="button" name="calculate3" value="Calculate" id="calculate" onclick="calcSolution3();">
+				<p>Answer = <strong><span id="solution3"></span></strong></p>		
 		</form>
 </body>
 </html>
