@@ -4,12 +4,35 @@
 <title>TOP Project Euler Solutions</title>
 <link href="pesStylesheet.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-<!--
-
-// -->
+		
+		function calcSolution1(){
+				//initialize variables using form input values				
+				var numOne = document.getElementById("mult1").value;
+				var numTwo = document.getElementById("mult2").value;
+				var limit = document.getElementById("uLimit").value;
+				var sumTotal = 0;
+				
+				//Loop through each real number from 1 to limit indicated by form input
+				//if the number is evenly divisible by one or both of the numbers indicated by form input
+				//add the number to the total			
+				for (i = 1; i < limit; i++ ) {
+						if ((i % numOne) == 0 || (i % numTwo) == 0) {
+								sumTotal += i;
+						}
+				}
+				//show the result of adding the evenly divisible numbers
+				document.getElementById("solution1").innerHTML = sumTotal;
+		}
+		
 </script>
 </head>
 <body>
-
+		<h1>The Odin Project Javascript 101 - Euler Project Solutions</h1></ br>
+		<h2>Solution 1</h2>
+		<form>
+				<p>Find the sum of all the multiples of <input type="number" name="mult1" id="mult1" value="3"> or <input type="number" name="mult2" id="mult2" value="5"> below <input type="number" name="uLimit" id="uLimit" value="1000"></p>
+				<input name="calculate" id="calculate" type="button" value="Calculate" onclick="calcSolution1();"/>
+		</form>
+		<p>Total = <strong><span id="solution1"></span></strong></p>
 </body>
 </html>
