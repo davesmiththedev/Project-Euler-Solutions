@@ -2,6 +2,9 @@ h2{
 		background-color: lightblue;
 }
 
+input #mult1{
+		padding: 1px;
+}
 
 #solution{
 		border: thin solid black;
